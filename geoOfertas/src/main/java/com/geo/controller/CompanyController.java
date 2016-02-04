@@ -2,12 +2,9 @@ package com.geo.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,13 +14,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.model.UploadedFile;
-
-import sun.misc.IOUtils;
-
-import com.geo.constants.Messages;
 import com.geo.model.Company;
 import com.geo.services.CompanyService;
+import org.primefaces.model.UploadedFile;
+
+import com.geo.constants.Messages;
 
 
 @ManagedBean
@@ -47,7 +42,7 @@ public class CompanyController {
 	}
 
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
 	 * de las companias desde la base de datos.
 	 */
 	@PostConstruct
@@ -64,7 +59,7 @@ public class CompanyController {
 	}
 	
 	/**
-	 * Método para habilitar el botón actualizar y ocultar el botón guardar
+	 * Mï¿½todo para habilitar el botï¿½n actualizar y ocultar el botï¿½n guardar
 	 */
 	public void showUpdateButton() {
 		showsUpdateBtn = true;

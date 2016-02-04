@@ -15,14 +15,14 @@ package com.geo.services;
 	import org.jboss.logging.Logger;
 
 	/**
-	 * Servicio que permite realizar operaciones en la BDD, insersión,
-	 * actualización, borrado, y busquedas por parámetros para cualquier objeto
+	 * Servicio que permite realizar operaciones en la BDD, insersiï¿½n,
+	 * actualizaciï¿½n, borrado, y busquedas por parï¿½metros para cualquier objeto
 	 * persistente.
 	 * 
-	 * @author Clear Minds Consultores Cía. Ltda.
+	 * @author Clear Minds Consultores Cï¿½a. Ltda.
 	 * 
 	 * @param <T>
-	 *            Entidad sobre la cual se realizarán las operaciones.
+	 *            Entidad sobre la cual se realizarï¿½n las operaciones.
 	 */
 	public abstract class ServicioBase<T> {
 		
@@ -127,7 +127,7 @@ package com.geo.services;
 		}
 
 		/**
-		 * Busca todos los registros, con límite de resultados de acuerdo a los
+		 * Busca todos los registros, con lï¿½mite de resultados de acuerdo a los
 		 * valores en sus parametros desde y hasta.
 		 * 
 		 * @param desde
@@ -136,7 +136,7 @@ package com.geo.services;
 		 * @param hasta
 		 *            Hasta que registro queremos los datos.
 		 * 
-		 * @return Lista de objetos con un máximo de resultados.
+		 * @return Lista de objetos con un mï¿½ximo de resultados.
 		 */
 		public List<T> buscarTodos(int desde, int hasta) {
 			return buscar("SELECT x FROM " + tipoEntidad.getName() + " x",
@@ -145,7 +145,7 @@ package com.geo.services;
 
 		/**
 		 * 
-		 * Realiza una búsqueda de acuerdo a los parametros recibidos, con límite de
+		 * Realiza una bï¿½squeda de acuerdo a los parametros recibidos, con lï¿½mite de
 		 * resultados de acuerdo a los valores en sus parametros desde y hasta.
 		 * 
 		 * @param consultaJPQL
@@ -159,8 +159,8 @@ package com.geo.services;
 		 * @param hasta
 		 *            Hasta que registro queremos los datos.
 		 * 
-		 * @return Lista de objetos con un máximo de resultados que cumple con los
-		 *         parámetros de búsqueda.
+		 * @return Lista de objetos con un mï¿½ximo de resultados que cumple con los
+		 *         parï¿½metros de bï¿½squeda.
 		 */
 		@SuppressWarnings("unchecked")
 		public List<T> buscar(String consultaJPQL, Map<String, Object> parametros,
@@ -186,7 +186,7 @@ package com.geo.services;
 		}
 
 		/**
-		 * Realiza una búsqueda de todos los registros, con límite de resultados de
+		 * Realiza una bï¿½squeda de todos los registros, con lï¿½mite de resultados de
 		 * acuerdo a los valores en sus parametros desde y hasta.
 		 * 
 		 * @param consultaJPQL
@@ -198,7 +198,7 @@ package com.geo.services;
 		 * @param hasta
 		 *            Hasta que registro queremos los datos.
 		 * 
-		 * @return Lista de objetos con un máximo de resultados de acuerdo a la
+		 * @return Lista de objetos con un mï¿½ximo de resultados de acuerdo a la
 		 *         consulta.
 		 */
 		public List<T> buscar(String consultaJPQL, int desde, int hasta) {
@@ -228,7 +228,7 @@ package com.geo.services;
 		}
 
 		/**
-		 * Realiza una búsqueda de acuerdo a los parametros recibidos, sin límite de
+		 * Realiza una bï¿½squeda de acuerdo a los parametros recibidos, sin lï¿½mite de
 		 * resultados
 		 * 
 		 * @param consultaJPQL
@@ -238,8 +238,8 @@ package com.geo.services;
 		 * @param parametros
 		 *            Mapa con los parametros y valores Ejm: mapa.put("id", 10)
 		 * 
-		 * @return Lista de objetos sin un máximo de resultados que cumple con los
-		 *         parámetros de búsqueda.
+		 * @return Lista de objetos sin un mï¿½ximo de resultados que cumple con los
+		 *         parï¿½metros de bï¿½squeda.
 		 */
 		public List<T> buscar(String consultaJPQL, Map<String, Object> parametros) {
 			return buscar(consultaJPQL, parametros, 0, 0);

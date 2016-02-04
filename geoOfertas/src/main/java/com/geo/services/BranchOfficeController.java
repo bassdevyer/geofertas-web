@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 
 import com.geo.constants.Messages;
 import com.geo.model.BranchOffice;
-import com.geo.model.Catalogue;
 import com.geo.model.Company;
 
 @ManagedBean
@@ -37,7 +36,7 @@ public class BranchOfficeController {
 	}
 	
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
 	 * de las sucursales desde la base de datos.
 	 */
 	@PostConstruct
@@ -58,13 +57,13 @@ public class BranchOfficeController {
 		companies=companyService.buscarTodos();
 	}
 	/**
-	 * Método para habilitar el botón actualizar y ocultar el botón guardar
+	 * Mï¿½todo para habilitar el botï¿½n actualizar y ocultar el botï¿½n guardar
 	 */
 	public void showUpdateButton() {
 		showsUpdateBtn = true;
 	}
 	/**
-	 * Busca la comñçia por Id
+	 * Busca la comï¿½ï¿½ia por Id
 	 */
 	public Company getCompanyById(Long id){
 		return companyService.buscarPorIdLong(id);

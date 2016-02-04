@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="geoOfertas:war">
+    <output-path>$PROJECT_DIR$/geoOfertas/target</output-path>
+    <root id="archive" name="geofertas-web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="geoOfertas:war exploded" />
+    </root>
+  </artifact>
+</component>

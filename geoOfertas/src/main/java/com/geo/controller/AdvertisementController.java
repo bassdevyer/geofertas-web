@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 
 import com.geo.constants.Messages;
 import com.geo.model.Advertisement;
-import com.geo.model.Company;
 import com.geo.services.AdvertisementService;
 
 @ManagedBean
@@ -31,7 +30,7 @@ public class AdvertisementController {
 	}
 
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
 	 * de las odertas desde la base de datos.
 	 */
 	@PostConstruct
@@ -47,7 +46,7 @@ public class AdvertisementController {
 	}
 
 	/**
-	 * Método para habilitar el botón actualizar y ocultar el botón guardar
+	 * Mï¿½todo para habilitar el botï¿½n actualizar y ocultar el botï¿½n guardar
 	 */
 	public void showUpdateButton() {
 		showsUpdateBtn = true;

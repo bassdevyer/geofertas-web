@@ -3,6 +3,7 @@ package com.geo.services;
 import javax.ejb.Stateless;
 
 import com.geo.model.Company;
+
 @Stateless
 public class CompanyService extends ServicioBase<Company>{
 	

@@ -27,7 +27,7 @@ public class UserController {
 	private long catalogueSelected;
 
 	@EJB
-	private UserService userService; 
+	private UserService userService;
 	@EJB
 	private CatalogService catalogService;
 
@@ -38,8 +38,8 @@ public class UserController {
 	}
 	
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
-	 * de los usuarios y catálogos desde la base de datos.
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
+	 * de los usuarios y catï¿½logos desde la base de datos.
 	 */
 	@PostConstruct
 	public void init() {
@@ -55,20 +55,20 @@ public class UserController {
 		users=userService.buscarTodos();
 	}
 	/**
-	 * Obtiene todos los registros de parámetros
+	 * Obtiene todos los registros de parï¿½metros
 	 */
 	public void getAllCatalogues(){
 		catalogues=catalogService.buscarTodos();
 	}
 	/**
-	 * Obtiene el parámetro de acuerdo a su ID
+	 * Obtiene el parï¿½metro de acuerdo a su ID
 	 */
 	public Catalogue getCatalogueById(Long id){
 		return catalogue=catalogService.buscarPorIdLong(id);
 	}
 	
 	/**
-	 * Método para habilitar el botón actualizar y ocultar el botón guardar
+	 * Mï¿½todo para habilitar el botï¿½n actualizar y ocultar el botï¿½n guardar
 	 */
 	public void showUpdateButton() {
 		showsUpdateBtn = true;

@@ -30,21 +30,21 @@ public class CatalogueController {
 	}
 	
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
-	 * de los catálogos desde la base de datos.
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
+	 * de los catï¿½logos desde la base de datos.
 	 */
 	@PostConstruct
 	public void init() {
 		getAllCatalogues();
 	}
 	/**
-	 * Obtiene todos los registros de parámetros
+	 * Obtiene todos los registros de parï¿½metros
 	 */
 	public void getAllCatalogues(){
 		catalogues=catalogService.buscarTodos();
 	}
 	/**
-	 * Método para habilitar el botón actualizar y ocultar el botón guardar
+	 * Mï¿½todo para habilitar el botï¿½n actualizar y ocultar el botï¿½n guardar
 	 */
 	public void showUpdateButton() {
 		showsUpdateBtn = true;

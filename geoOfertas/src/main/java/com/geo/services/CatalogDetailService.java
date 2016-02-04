@@ -3,6 +3,7 @@ package com.geo.services;
 import javax.ejb.Stateless;
 
 import com.geo.model.CatalogueDetail;
+
 @Stateless
 public class CatalogDetailService extends ServicioBase<CatalogueDetail>{
 	

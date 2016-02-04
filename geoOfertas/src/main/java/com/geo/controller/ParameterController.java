@@ -15,9 +15,9 @@ import com.geo.services.ParameterService;
 import com.geo.services.UserService;
 
 /**
- * Controlador para la página de administración de parámetros del sistema.
+ * Controlador para la pï¿½gina de administraciï¿½n de parï¿½metros del sistema.
  * 
- * @author ç
+ * @author ï¿½
  * 
  */
 @ManagedBean
@@ -39,8 +39,8 @@ public class ParameterController {
 	}
 
 	/**
-	 * Método que se ejecuta después del constructor, se obtienen los registros
-	 * de los parámetros y usuarios desde la base de datos.
+	 * Mï¿½todo que se ejecuta despuï¿½s del constructor, se obtienen los registros
+	 * de los parï¿½metros y usuarios desde la base de datos.
 	 */
 	@PostConstruct
 	public void init() {
@@ -100,7 +100,7 @@ public class ParameterController {
 	}
 
 	/**
-	 * Se obtienen los registros de los parámetros desde la base de datos.
+	 * Se obtienen los registros de los parï¿½metros desde la base de datos.
 	 */
 	public void getAllParameters() {
 		parameters = parameterService.buscarTodos();
