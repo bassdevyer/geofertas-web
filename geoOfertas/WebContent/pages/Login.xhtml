@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/templates/login.xhtml">
+	<ui:define name="contenido">
+
+		<h:form>
+
+			<p:panel>
+				<h:panelGrid columns="2" style="width:50px">
+					<h:outputFormat value="Usuario"
+						style="color:#00000;font-family:'arial';font-size:15px" />
+					<p:inputText value="#{adminLoginController.administrator.username}" />
+					<h:outputText value="Contraseña"
+						style="color:#00000;font-family:'arial';font-size:15px" />
+					<p:password value="#{adminLoginController.administrator.password}" />
+				</h:panelGrid>
+
+				<div align="center">
+					<p:commandLink action="#{adminLoginController.adminValidate()}">
+						<p:graphicImage value="/imagenes/ok.png" width="60"
+							height="60" />
+					</p:commandLink>
+				</div>
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

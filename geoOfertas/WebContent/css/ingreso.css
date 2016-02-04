@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+   background: url(../imagenes/fondo1.jpg);
+   background-repeat: no-repeat;
+   margin: 0px;
+   background-attachment: fixed;
+
+}
+
+#login {
+-webkit-box-shadow: -37px 23px 40px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: -37px 23px 40px -2px rgba(0,0,0,0.75);
+box-shadow: -37px 23px 40px -2px rgba(0,0,0,0.75);
+
+/*350*/
+	height:auto;
+	width: 350px;
+	
+	margin-left:825px;
+	margin-top: 300px;
+	opacity: 0.9;
+
+border-color:#09C;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 15px;
+	
+}
+
+

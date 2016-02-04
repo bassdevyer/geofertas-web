@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/templates/clearTemplate.xhtml">
+
+	<ui:define name="tituloPagina">Oferta</ui:define>
+	<ui:define name="tituloFormulario"></ui:define>
+	<ui:define name="autor"></ui:define>
+	<ui:define name="contenido">
+		<h:form id="frm">
+			<h:panelGrid columns="6" id="pnlGAdvertisement">
+				<h:outputText value="Título: " />
+				<p:inputText value="#{advertisementController.advertisement.title}"
+					onkeypress="return validarNombres(event)"
+					title="Ingrese solo letras">
+					<p:tooltip showEvent="focus" hideEvent="blur" />
+				</p:inputText>
+				<h:outputText value="Descripción: " />
+				<p:inputText value="#{advertisementController.advertisement.description}">
+				</p:inputText>
+				<h:outputText value="Fecha Inicio: " />
+				<p:calendar  value="#{advertisementController.advertisement.startDate}" />				
+				<h:outputText value="Fecha Fin: " />
+				<p:calendar value="#{advertisementController.advertisement.endDate}" />
+				<h:outputText value="Imagen " />
+				
+				<h:outputText value="Habilitar/Deshabilitar " />
+				<p:selectBooleanCheckbox value="#{advertisementController.advertisement.active}"></p:selectBooleanCheckbox>
+				
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbAdvs"
+				value="#{advertisementController.advertisements}"
+				emptyMessage="No se encontraron ofertas" var="adv" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Título">
+					<h:outputText value="#{adv.title}" />
+				</p:column>
+				<p:column headerText="Descripción">
+					<h:outputText value="#{adv.description}" />
+				</p:column>
+				<p:column headerText="Fecha Inicio">
+					<h:outputText value="#{adv.startDate}" />
+				</p:column>
+				<p:column headerText="Fecha Fin">
+					<h:outputText value="#{adv.endDate}" />
+				</p:column>
+				<p:column headerText="Habilitado/Deshabilitado">
+					<h:outputText value="#{adv.active}" />
+				</p:column>
+				<p:column headerText="Imagen">
+					<h:outputText value="#{adv.image}" />
+				</p:column>
+				<p:column headerText="Acciones">
+					<p:commandButton value="Editar" update="@form"
+						action="#{advertisementController.showUpdateButton()}">
+						<f:setPropertyActionListener
+							target="#{advertisementController.advertisement}" value="#{adv}" />
+					</p:commandButton>
+					<p:commandButton value="Eliminar" update="@form"
+						action="#{advertisementController.deleteAdvertisement()}">
+						<f:setPropertyActionListener
+							target="#{advertisementController.advertisement}" value="#{adv}" />
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+			<br />
+			<p:commandLink action="#{advertisementController.insertAdvertisement}"
+				rendered="#{!advertisementController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/guardar.png" width="40" height="40" />
+			</p:commandLink>
+
+			<p:commandLink action="#{advertisementController.updateAdvertisement()}"
+				rendered="#{advertisementController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/editar.png" width="40" height="40" />
+			</p:commandLink>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

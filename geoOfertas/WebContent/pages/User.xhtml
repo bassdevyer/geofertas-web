@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/templates/clearTemplate.xhtml">
+
+	<ui:define name="tituloPagina">Usuario</ui:define>
+	<ui:define name="tituloFormulario"></ui:define>
+	<ui:define name="autor"></ui:define>
+	<ui:define name="contenido">
+		<h:form id="frm">
+			<h:panelGrid columns="6" id="pnlGUser">
+				<h:outputText value="Nombre: " />
+				<p:inputText value="#{userController.user.firstName}"
+					onkeypress="return validarNombres(event)"
+					title="Ingrese solo letras">
+					<p:tooltip showEvent="focus" hideEvent="blur" />
+				</p:inputText>
+				<h:outputText value="Apellido: " />
+				<p:inputText value="#{userController.user.lastName}"
+					onkeypress="return validarNombres(event)"
+					title="Ingrese solo letras">
+					<p:tooltip showEvent="focus" hideEvent="blur" />
+				</p:inputText>
+				<h:outputText value="Email: " />
+				<p:inputText value="#{userController.user.email}">
+				</p:inputText>
+				<h:outputText value="Nombre de usuario: " />
+				<p:inputText value="#{userController.user.username}">
+				</p:inputText>
+				<h:outputText value="Contraseña: " />
+				 <p:password id="nonFeedback" value="#{userController.user.password}" />
+				
+				<h:outputText value="Autenticación: " />
+				<p:selectOneMenu value="#{userController.catalogueSelected}">
+					<f:selectItem itemLabel="Seleccione" />
+					<f:selectItems value="#{userController.catalogues}" var="par"
+						itemLabel="#{par.name}" itemValue="#{par.id}" />
+				</p:selectOneMenu>
+				<h:outputText value="Habilitar/Deshabilitar " />
+				<p:selectBooleanCheckbox value="#{userController.user.enabled}"></p:selectBooleanCheckbox>
+				
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbUsers"
+				value="#{userController.users}"
+				emptyMessage="No se encontraron usuarios" var="user" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nombres">
+					<h:outputText value="#{user.firstName} #{user.lastName}" />
+				</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{user.email}" />
+				</p:column>
+				<p:column headerText="Habilitado/Deshabilitado">
+					<h:outputText value="#{user.enabled}" />
+				</p:column>
+				<p:column headerText="Nombre de usuario">
+					<h:outputText value="#{user.username}" />
+				</p:column>
+				<p:column headerText="Autenticación">
+					<h:outputText value="#{user.authenticationType}" />
+				</p:column>
+				<p:column headerText="Acciones">
+					<p:commandButton value="Editar" update="@form"
+						action="#{userController.showUpdateButton()}">
+						<f:setPropertyActionListener
+							target="#{userController.user}" value="#{user}" />
+					</p:commandButton>
+					<p:commandButton value="Eliminar" update="@form"
+						action="#{userController.deleteUser()}">
+						<f:setPropertyActionListener
+							target="#{userController.user}" value="#{user}" />
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+			<br />
+			<p:commandLink action="#{userController.insertUser()}"
+				rendered="#{!userController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/guardar.png" width="40" height="40" />
+			</p:commandLink>
+
+			<p:commandLink action="#{userController.updateUser()}"
+				rendered="#{userController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/editar.png" width="40" height="40" />
+			</p:commandLink>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

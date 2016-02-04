@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/templates/clearTemplate.xhtml">
+
+	<ui:define name="tituloPagina">Compañía</ui:define>
+	<ui:define name="tituloFormulario"></ui:define>
+	<ui:define name="autor"></ui:define>
+	<ui:define name="contenido">
+		<h:form id="frm">
+			<h:panelGrid columns="6" id="pnlGCompany">
+				<h:outputText value="Nombre: " />
+				<p:inputText value="#{companyController.company.name}"
+					onkeypress="return validarNombres(event)"
+					title="Ingrese solo letras">
+					<p:tooltip showEvent="focus" hideEvent="blur" />
+				</p:inputText>
+				<h:outputText value="Descripción: " />
+				<p:inputText value="#{companyController.company.description}">
+				</p:inputText>
+				<h:outputText value="Habilitar/Deshabilitar " />
+				<p:selectBooleanCheckbox value="#{companyController.company.enabled}"></p:selectBooleanCheckbox>
+				<h:outputText value="Logo " />
+				  <p:fileUpload value="#{companyController.file}" mode="simple" skinSimple="true"/>				   
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbCompanies"
+				value="#{companyController.companies}"
+				emptyMessage="No se encontraron compañías" var="comp" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nombre">
+					<h:outputText value="#{comp.name}" />
+				</p:column>
+				<p:column headerText="Descripción">
+					<h:outputText value="#{comp.description}" />
+				</p:column>
+				<p:column headerText="Habilitado/Deshabilitado">
+					<h:outputText value="#{comp.enabled}" />
+				</p:column>
+				<p:column headerText="Logo">
+					<h:outputText value="#{comp.logo}" />
+				</p:column>
+				<p:column headerText="Acciones">
+					<p:commandButton value="Editar" update="@form"
+						action="#{companyController.showUpdateButton()}">
+						<f:setPropertyActionListener
+							target="#{companyController.company}" value="#{comp}" />
+					</p:commandButton>
+					<p:commandButton value="Eliminar" update="@form"
+						action="#{companyController.deleteCompany()}">
+						<f:setPropertyActionListener
+							target="#{companyController.company}" value="#{comp}" />
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+			<br />
+			<p:commandLink action="#{companyController.insertCompany()}"
+				rendered="#{!companyController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/guardar.png" width="40" height="40" />
+			</p:commandLink>
+
+			<p:commandLink action="#{companyController.updateCompany()}"
+				rendered="#{companyController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/editar.png" width="40" height="40" />
+			</p:commandLink>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

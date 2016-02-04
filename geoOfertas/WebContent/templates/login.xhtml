@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<p:growl autoUpdate="true"/>
+<h:outputScript name="validador.js"></h:outputScript>
+	<title><ui:insert name="tituloPagina">Login</ui:insert>
+	</title>
+	<meta charset="utf-8" />
+	<link href="#{request.contextPath}/css/ingreso.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+
+<h:body bgcolor="#00000">
+<!-- 	<img class="imagen-fondo" -->
+<!-- 		src="#{request.contextPath}/imagenes/fondo.jpg" /> -->
+	<div id="login">
+		<ui:insert name="contenido">
+							Aqui va el contenido
+						</ui:insert>
+	</div>
+</h:body>
+
+</html>

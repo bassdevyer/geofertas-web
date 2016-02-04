@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/templates/clearTemplate.xhtml">
+
+	<ui:define name="tituloPagina">Catálogos</ui:define>
+	<ui:define name="tituloFormulario"></ui:define>
+	<ui:define name="autor"></ui:define>
+	<ui:define name="contenido">
+		<h:form id="frm">
+			<h:panelGrid columns="6" id="pnlGCatalogue">
+				<h:outputText value="Nombre: " />
+				<p:inputText value="#{catalogueController.catalogue.name}"
+					onkeypress="return validarNombres(event)"
+					title="Ingrese solo letras">
+					<p:tooltip showEvent="focus" hideEvent="blur" />
+				</p:inputText>
+				<h:outputText value="Descripción: " />
+				<p:inputText value="#{catalogueController.catalogue.description}">
+				</p:inputText>
+				<h:outputText value="Habilitar/Deshabilitar " />
+				<p:selectBooleanCheckbox value="#{catalogueController.catalogue.enabled}"></p:selectBooleanCheckbox>
+				
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbCatalogue"
+				value="#{catalogueController.catalogues}"
+				emptyMessage="No se encontraron catálogos" var="cat" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nombre">
+					<h:outputText value="#{cat.name}" />
+				</p:column>
+				<p:column headerText="Descripción">
+					<h:outputText value="#{cat.description}" />
+				</p:column>
+				<p:column headerText="Habilitado/Deshabilitado">
+					<h:outputText value="#{cat.enabled}" />
+				</p:column>				
+				<p:column headerText="Acciones">
+					<p:commandButton value="Editar" update="@form"
+						action="#{catalogueController.showUpdateButton()}">
+						<f:setPropertyActionListener
+							target="#{catalogueController.catalogue}" value="#{cat}" />
+					</p:commandButton>
+					<p:commandButton value="Eliminar" update="@form"
+						action="#{catalogueController.deleteCatalogue()}">
+						<f:setPropertyActionListener
+							target="#{catalogueController.catalogue}" value="#{cat}" />
+					</p:commandButton>
+					<p:link outcome="productDetail" value="Ver Detalles">
+   						 <f:param name="productId" value="10" />
+					</p:link>
+
+				</p:column>
+				
+				
+			</p:dataTable>
+			<br />
+			<p:commandLink action="#{catalogueController.insertCatalogue()}"
+				rendered="#{!catalogueController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/guardar.png" width="40" height="40" />
+			</p:commandLink>
+
+			<p:commandLink action="#{catalogueController.updateCatalogue()}"
+				rendered="#{catalogueController.showsUpdateBtn}" update="@form">
+				<p:graphicImage value="/imagenes/editar.png" width="40" height="40" />
+			</p:commandLink>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
