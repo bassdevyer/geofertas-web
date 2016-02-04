@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/geoOferta/geoOferta.iml" filepath="$PROJECT_DIR$/geoOferta/geoOferta.iml" />
       <module fileurl="file://$PROJECT_DIR$/geoOfertas/geoOfertas.iml" filepath="$PROJECT_DIR$/geoOfertas/geoOfertas.iml" />
     </modules>
   </component>
